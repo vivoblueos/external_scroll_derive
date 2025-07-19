@@ -1,0 +1,19 @@
+import("//build/templates/build_template.gni")
+
+build_rust("scroll_derive") {
+  epoch = "0.12"
+  crate_type = "proc-macro"
+  sources = [ "//external/scroll_derive/v0.12.1/src/lib.rs" ]
+  inputs = []
+
+  edition = "2018"
+  deps = [
+    "//external/proc-macro2/v1.0.89:proc_macro2",
+    "//external/quote/v1.0.37:quote",
+    "//external/syn/v2.0.87:syn",
+  ]
+
+  rustflags = [
+    "--cap-lints=allow",  # Suppress all warnings in crates.io crates
+  ]
+}
